@@ -253,13 +253,14 @@
 
                       ; clinical-observations hold the equivalent of measurements, but for subjects instead of samples
                       ; clinical-observations will store clinical data such as BMI and response, and capture the timepoint at which they are measured
-                      :clinical-observations [{:pret/input-file "processed/rizvi-clinical_observations.txt"
-                                               :subject         "subject.id"
-                                               :timepoint       "timepoint"
-                                               :pret/variable   "variable"
-                                               :pret/value      "value"
-                                               :pret/variables  {"recist" :clinical-observation/recist
-                                                                 "dcb"    :clinical-observation/responder}}]
+                      :clinical-observation-sets [{:name "recist-and-dcb-all-timepoints"
+                                                   :clinical-observations [{:pret/input-file "processed/rizvi-clinical_observations.txt"
+                                                                            :subject         "subject.id"
+                                                                            :timepoint       "timepoint"
+                                                                            :pret/variable   "variable"
+                                                                            :pret/value      "value"
+                                                                            :pret/variables  {"recist" :clinical-observation/recist
+                                                                                              "dcb"    :clinical-observation/dcb}}]}]
 
 
 
