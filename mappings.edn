@@ -32,6 +32,10 @@
                                      :variant.type/onp "ONP"
                                      :variant.type/del "DEL"
                                      :variant.type/ins "INS"}
+                 :enum/variant.impact {:variant.impact/high "HIGH"
+                                       :variant.impact/low "LOW"
+                                       :variant.impact/moderate "MODERATE"
+                                       :variant.impact/modifier "MODIFIER"}
                  :enum/variant.classification {:variant.classification/intron "Intron"
                                                :variant.classification/UTR3 "3'UTR"
                                                :variant.classification/frame-shift-del "Frame_Shift_Del"
@@ -67,4 +71,5 @@
                   :genomic-coordinate/assembly :enum/genomic.coordinate.assembly
                   :variant/type :enum/variant.type
                   :variant/classification :enum/variant.classification
+                  :variant/impact :enum/variant.impact
                   :variant/feature-type :enum/variant.feature}}
