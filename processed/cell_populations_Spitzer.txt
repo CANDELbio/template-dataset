@@ -9,19 +9,19 @@ NKT	mature NK T cell	NA
 CD4 T Cells	CD4-positive, alpha-beta T cell	NA
 CD4 T Cells > CD25+	CD4-positive, alpha-beta T cell	IL2RA
 CD4 T Cells > CD38+	CD4-positive, alpha-beta T cell	CD38
-CD4 T Cells > Foxp3+	CD4-positive, alpha-beta T cell	FOXP3
+CD4 T Cells > Foxp3+	CD4-positive, alpha-beta T cell	FOXP3;KI67;IL2RA
 CD4 T Cells > Ki-67+	CD4-positive, alpha-beta T cell	KI67
 CD4 T Cells > PD-1+	CD4-positive, alpha-beta T cell	PDCD1
 CM Th	central memory CD4-positive, alpha-beta T cell	NA
 CM Th > CD25+	central memory CD4-positive, alpha-beta T cell	IL2RA
-CM Th > CD38+	central memory CD4-positive, alpha-beta T cell	CD38
+CM Th > CD38+	central memory CD4-positive, alpha-beta T cell	CD38;FOXP3
 CM Th > Ki-67+	central memory CD4-positive, alpha-beta T cell	KI67
 CM Th > PD-1+	central memory CD4-positive, alpha-beta T cell	PDCD1
 EM Th	effector memory CD4-positive, alpha-beta T cell	NA
 EM Th > CD25+	effector memory CD4-positive, alpha-beta T cell	IL2RA
 EM Th > CD38+	effector memory CD4-positive, alpha-beta T cell	CD38
 EM Th > Ki-67+	effector memory CD4-positive, alpha-beta T cell	KI67
-EM Th > PD-1+	effector memory CD4-positive, alpha-beta T cell	PDCD1
+EM Th > PD-1+	effector memory CD4-positive, alpha-beta T cell	PDCD1;CD38
 Naive Th	naive thymus-derived CD8-positive, alpha-beta T cell	NA
 Naive Th > CD25+	naive thymus-derived CD4-positive, alpha-beta T cell	IL2RA
 Naive Th > CD38+	naive thymus-derived CD4-positive, alpha-beta T cell	CD38
