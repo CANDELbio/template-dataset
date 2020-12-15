@@ -21,10 +21,10 @@
                                     :subject.sex/male ["M"]}
                  :enum/responder {true ["DCB"]
                                   false ["NDB" "NR"]}
-                 :enum/clinical.observation.recist {:clinical.observation.recist/SD ["SD"]
-                                                    :clinical.observation.recist/PD ["POD"]
-                                                    :clinical.observation.recist/PR ["PR"]}
-                 :enum/genomic.coordinate.assembly {:genomic.coordinate.assembly/GRCh38 ["GrCh38" "GRCh38" ":assembly/GRCh38"]}
+                 :enum/clinical.observation.recist {:clinical-observation.recist/SD ["SD"]
+                                                    :clinical-observation.recist/PD ["POD"]
+                                                    :clinical-observation.recist/PR ["PR"]}
+                 :enum/genomic.coordinate.assembly {:genomic-coordinate.assembly/GRCh38 ["GrCh38" "GRCh38" ":assembly/GRCh38"]}
                  :enum/variant.type {:variant.type/snp "SNP"
                                      :variant.type/consolidated "Consolidated"
                                      :variant.type/dnp "DNP"
