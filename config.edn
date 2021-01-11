@@ -231,7 +231,12 @@
                                                :meddra-disease  "disease"
                                                :smoker          "smoker"
                                                :age "age"
-                                               :HLAI-type       "hla"
+                                               :HLA-A-type       {:pret/many-variable "hlaA"
+                                                                  :pret/many-delimiter ","}
+                                               :HLA-B-type       {:pret/many-variable "hlaB"
+                                                                  :pret/many-delimiter ","}
+                                               :HLA-C-type       {:pret/many-variable "hlaC"
+                                                                  :pret/many-delimiter ","}
                                                ; The following map specifies the links between subjects and their therapy or therapies. Each subject can have 0, 1, or many therapies.
                                                ; The therapy entity links subjects to treatment-regimens (see below) which are things like arms of clinical trials, which many subjects are on.
                                                ; The wick package contains helper functions to generate all this data for the simple case in which each subject has only a single therapy
