@@ -10,10 +10,10 @@
                                         :sample.specimen/ffpe ["tumor-FFPE"]}
                  :enum/sample.type {:sample.type/normal ["sample.type/normal" "N" :sample.type/normal]
                                     :sample.type/tumor ["sample.type/tumor" "" "T"]}
-                 :enum/metastasis {true ["Met" "T"]
-                                   false ["Primary" "N/A" "F" ""]}
-                 :enum/tf {true ["T"]
-                           false ["F" ""]}
+                 :enum/metastasis {true ["Met" "T" "TRUE"]
+                                   false ["Primary" "N/A" "NA" "F" "FALSE" ""]}
+                 :enum/tf {true ["T" "TRUE"]
+                           false ["F" "" "NA" "N/A" "FALSE"]}
                  :enum/subject.smoker {:subject.smoker/current ["Current"]
                                        :subject.smoker/former ["Former"]
                                        :subject.smoker/never ["Never"]}
@@ -21,10 +21,10 @@
                                     :subject.sex/male ["M"]}
                  :enum/responder {true ["DCB"]
                                   false ["NDB" "NR"]}
-                 :enum/clinical.observation.recist {:clinical.observation.recist/SD ["SD"]
-                                                    :clinical.observation.recist/PD ["POD"]
-                                                    :clinical.observation.recist/PR ["PR"]}
-                 :enum/genomic.coordinate.assembly {:genomic.coordinate.assembly/GRCh38 ["GrCh38" "GRCh38" ":assembly/GRCh38"]}
+                 :enum/clinical.observation.recist {:clinical-observation.recist/SD ["SD"]
+                                                    :clinical-observation.recist/PD ["POD"]
+                                                    :clinical-observation.recist/PR ["PR"]}
+                 :enum/genomic.coordinate.assembly {:genomic-coordinate.assembly/GRCh38 ["GrCh38" "GRCh38" ":assembly/GRCh38"]}
                  :enum/variant.type {:variant.type/snp "SNP"
                                      :variant.type/consolidated "Consolidated"
                                      :variant.type/dnp "DNP"
@@ -53,7 +53,7 @@
                                                :variant.classification/in-frame-del "In_Frame_Del"
                                                :variant.classification/nonstop "Nonstop_Mutation"
                                                :variant.classification/transl-start-site "Translation_Start_Site"
-                                               :variant.classification/IGR "IGR" }
+                                               :variant.classification/IGR "IGR"}
                  :enum/variant.feature  {:variant.feature/motif ["Motif" "MotifFeature" ""]
                                          :variant.feature/regulatory ["Regulatory" "RegulatoryFeature"]
                                          :variant.feature/transcript ["Transcript" "TranscriptFeature"]}}

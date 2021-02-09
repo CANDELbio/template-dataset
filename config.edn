@@ -4,12 +4,12 @@
  ; Generally all keys that begin with :pret/ are specific commands for telling pret what to do with your data or config
  :pret/import        {:user        "your-user-name"
                       :mappings    "mappings.edn"
-                      :name "your-import-name"}
+                      :name "template-diff-many-base"}
 
  ; The top-level :dataset section contains all the data included in your dataset (excluding reference data such as variants)
  :dataset            {; The data below is literal data - it will be input into the database as is. So the name of the dataset will be "dataset name", etc.
                       ; This is as opposed to data that is input from a file -- see below for many examples of this.
-                      :name                  "template-dataset"
+                      :name                  "template-diff-many"
                       :description           "Description of your dataset, ie title of paper, title of clinical trial, or description of conglomerate dataset"
                       :doi                   "10.1126/science.aaa1348"
                       :url                   "http://science.sciencemag.org/content/suppl/2015/03/11/science.aaa1348.DC1"
@@ -39,9 +39,9 @@
                                                                                    :pret/value      "value"
                                                                                    :pret/variables  {"t.depth" :measurement/t-depth
                                                                                                      "n.depth" :measurement/n-depth
-                                                                                                     "vaf"     :measurement/vaf}
+                                                                                                     "vaf"     :measurement/vaf}}]}
                                                                                    ; Note that it would be totally fine to have these variables mapped directly to columns, if you had that file format instead
-                                                                                   }]}
+                                                                                   
 
 
                                                                   ; To input another set of measurements also from WES, use another measurement-set
@@ -128,10 +128,11 @@
                                                :measurement-sets [{:name "Spitzer gated"
                                                                    :cell-populations [{:pret/input-file "processed/cell_populations_Spitzer.txt"
                                                                                        :pret/na "NA"
-                                                                                       :name "name"
-                                                                                       :positive-markers "positive.epitopes"
                                                                                        :cell-type "cell.type"
-                                                                                       :pret/constants {:from-clustering false}}]
+                                                                                       :pret/constants {:from-clustering false}
+                                                                                       :positive-markers {:pret/many-delimiter  ";"
+                                                                                                          :pret/many-variable "positive.epitopes"}
+                                                                                       :name "name"}]
                                                                    :measurements [{:pret/input-file "processed/cytof_measurements_eventCount_Spitzer.txt"
                                                                                    :pret/na "NA"
                                                                                    :pret/omit-if-na [:measurement/cell-count
@@ -143,21 +144,21 @@
                                                                                    :pret/value "value"
                                                                                    :pret/variables {"eventCount" :measurement/cell-count
                                                                                                     "normalization.measurement" :measurement/leukocyte-count
-                                                                                                    "normalized.measurement" :measurement/percent-of-leukocytes }}
+                                                                                                    "normalized.measurement" :measurement/percent-of-leukocytes}}
                                                                                   {:pret/input-file "processed/cytof_measurements_median_Spitzer.txt"
                                                                                    :pret/na "NA"
                                                                                    :pret/omit-if-na [:measurement/median-channel-value]
                                                                                    :sample "sample"
                                                                                    :cell-population "uniquePopulationName"
                                                                                    :epitope "epitope"
-                                                                                   :median-channel-value "median"}
+                                                                                   :median-channel-value "median"}]}
 
-                                                                                  ]}
+                                                                                  
                                                                   {:name "Spitzer clustered"
                                                                    :description "All data pooled together and clustered with grappolo"
                                                                    :cell-populations [{:pret/input-file "processed/cell_populations_cluster_Spitzer.txt"
                                                                                        :name "cluster.id"
-                                                                                       :pret/constants {:from-clustering true} }]
+                                                                                       :pret/constants {:from-clustering true}}]
                                                                    :measurements [{:pret/input-file "processed/cytof_measurements_clusters_Spitzer.txt"
                                                                                    :pret/na "NA"
                                                                                    :pret/omit-if-na [:measurement/median-channel-value
@@ -168,10 +169,10 @@
                                                                                    :pret/variable "variable"
                                                                                    :pret/value "value"
                                                                                    :pret/variables {"median-channel-value" :measurement/median-channel-value
-                                                                                                    "popsize" :measurement/percent-of-leukocytes}}
+                                                                                                    "popsize" :measurement/percent-of-leukocytes}}]}]}]
 
-                                                                                  ]}]}
-                                              ]
+                                                                                  
+                                              
 
 
 
@@ -230,7 +231,12 @@
                                                :meddra-disease  "disease"
                                                :smoker          "smoker"
                                                :age "age"
-                                               :HLAI-type       "hla"
+                                               :HLA-A-type       {:pret/many-variable "hlaA"
+                                                                  :pret/many-delimiter ","}
+                                               :HLA-B-type       {:pret/many-variable "hlaB"
+                                                                  :pret/many-delimiter ","}
+                                               :HLA-C-type       {:pret/many-variable "hlaC"
+                                                                  :pret/many-delimiter ","}
                                                ; The following map specifies the links between subjects and their therapy or therapies. Each subject can have 0, 1, or many therapies.
                                                ; The therapy entity links subjects to treatment-regimens (see below) which are things like arms of clinical trials, which many subjects are on.
                                                ; The wick package contains helper functions to generate all this data for the simple case in which each subject has only a single therapy
@@ -268,9 +274,7 @@
                       ; Each treatment regimen may or may not be linked to a clinical trial
                       ; Subjects are linked to treatment-regimen(s) through the therapy entity (see above)
                       :treatment-regimens    [{:name           "Pembrolizumab-3wk"
-                                               :clinical-trial {:nct-number "NCT01295827"
-                                                                :other-ids  "KEYNOTE-001"
-                                                                :name-long  "Study of Pembrolizumab (MK-3475) in Participants With Progressive Locally Advanced or Metastatic Carcinoma, Melanoma, or Non-small Cell Lung Carcinoma"}
+                                               :clinical-trial {:nct-number "NCT01295827"}
                                                :drug-regimens  {:drug         "PEMBROLIZUMAB"
                                                                 :cycle-length 21}}
                                               {:name           "Pembrolizumab-2wk"
@@ -387,7 +391,6 @@
                        ; values all in one column, with values separated by a delimeter like a semicolon, and use the following syntax to specify that
                        :genes       {:pret/many-delimiter ";"
                                      :pret/many-variable "Genes"}}
-
-
-
-}
+  :clinical-trial  {:nct-number "NCT01295827"
+                    :other-ids  "KEYNOTE-001"
+                    :name-long  "Study of Pembrolizumab (MK-3475) in Participants With Progressive Locally Advanced or Metastatic Carcinoma, Melanoma, or Non-small Cell Lung Carcinoma"}}
