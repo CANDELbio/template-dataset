@@ -3,13 +3,12 @@
 {; The top-level :pret/import section gives information about your data import
  ; Generally all keys that begin with :pret/ are specific commands for telling pret what to do with your data or config
  :pret/import        {:user        "your-user-name"
-                      :mappings    "mappings.edn"
-                      :name "template-diff-many-base"}
+                      :mappings    "mappings.edn"}
 
  ; The top-level :dataset section contains all the data included in your dataset (excluding reference data such as variants)
  :dataset            {; The data below is literal data - it will be input into the database as is. So the name of the dataset will be "dataset name", etc.
                       ; This is as opposed to data that is input from a file -- see below for many examples of this.
-                      :name                  "template-diff-many"
+                      :name                  "template-dataset"
                       :description           "Description of your dataset, ie title of paper, title of clinical trial, or description of conglomerate dataset"
                       :doi                   "10.1126/science.aaa1348"
                       :url                   "http://science.sciencemag.org/content/suppl/2015/03/11/science.aaa1348.DC1"
