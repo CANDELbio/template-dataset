@@ -19,8 +19,8 @@
                                        :subject.smoker/never ["Never"]}
                  :enum/subject.sex {:subject.sex/female ["F"]
                                     :subject.sex/male ["M"]}
-                 :enum/responder {true ["DCB"]
-                                  false ["NDB" "NR"]}
+                 :enum/dcb {true ["DCB"]
+                            false ["NDB" "NR"]}
                  :enum/clinical.observation.recist {:clinical-observation.recist/SD ["SD"]
                                                     :clinical-observation.recist/PD ["POD"]
                                                     :clinical-observation.recist/PR ["PR"]}
@@ -66,7 +66,7 @@
                   :sample/recurrence :enum/tf
                   :subject/smoker :enum/subject.smoker
                   :subject/sex :enum/subject.sex
-                  :clinical-observation/responder :enum/responder
+                  :clinical-observation/dcb :enum/dcb
                   :clinical-observation/recist :enum/clinical.observation.recist
                   :genomic-coordinate/assembly :enum/genomic.coordinate.assembly
                   :variant/type :enum/variant.type
