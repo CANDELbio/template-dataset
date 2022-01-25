@@ -1,16 +1,21 @@
 rm(list = ls())
 library(data.table)
 
+# -- NOTE --
+# TCGA portions of this script no longer run. They will need to be re-written
+# if there are more substantive changes in the future. The script:
+# ref_data_filter.R re-processes _processed_ files to match new/different ref
+# data.
+
 ####### config paths for where processed data lives and how much to downsample
-pd.dir <- '~/code/pret-datasets'
-tcga.dir <- '~/data/tcga-import'
+pd.dir <- '~/azure-datasets'
+tcga.dir <- '~/azure-datasets/tcga-paad'
 num.cytof.meas <- 1000
 num.variants <- 1000
 setwd(file.path(pd.dir, 'template', 'processed'))
 
 
 ####### Copy samples and measurements files from Rizvi and TCGA exactly as they are
-# Not sure if this works on windows?
 
 # Rizvi
 for (f in c('samples.txt',
@@ -116,6 +121,4 @@ fwrite(cnv, 'cnv_meas_1.tsv', sep = '\t')
 cnv = fread('cnv_meas_3.tsv')
 cnv$barcode = 'TCGA-02-2483-01A-01R-1849-01'
 fwrite(cnv, 'cnv_meas_3.tsv', sep = '\t')
-
-
 
