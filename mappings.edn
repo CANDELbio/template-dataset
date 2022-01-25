@@ -24,7 +24,10 @@
                  :enum/clinical.observation.recist {:clinical-observation.recist/SD ["SD"]
                                                     :clinical-observation.recist/PD ["POD"]
                                                     :clinical-observation.recist/PR ["PR"]}
-                 :enum/genomic.coordinate.assembly {:genomic-coordinate.assembly/GRCh38 ["GrCh38" "GRCh38" ":assembly/GRCh38"]}
+                 :enum/genomic-coordinate.assembly {:genomic-coordinate.assembly/GRCh38 ["GrCh38"
+                                                                                         "GRCh38"
+                                                                                         ":assembly/GRCh38"
+                                                                                         ":genomic-coordinate.assembly/GRCh38"]}
                  :enum/variant.type {:variant.type/snp "SNP"
                                      :variant.type/consolidated "Consolidated"
                                      :variant.type/dnp "DNP"
@@ -68,7 +71,7 @@
                   :subject/sex :enum/subject.sex
                   :clinical-observation/dcb :enum/dcb
                   :clinical-observation/recist :enum/clinical.observation.recist
-                  :genomic-coordinate/assembly :enum/genomic.coordinate.assembly
+                  :genomic-coordinate/assembly :enum/genomic-coordinate.assembly
                   :variant/type :enum/variant.type
                   :variant/classification :enum/variant.classification
                   :variant/impact :enum/variant.impact
