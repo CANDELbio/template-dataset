@@ -8,7 +8,7 @@
  ; The top-level :dataset section contains all the data included in your dataset (excluding reference data such as variants)
  :dataset            {; The data below is literal data - it will be input into the database as is. So the name of the dataset will be "dataset name", etc.
                       ; This is as opposed to data that is input from a file -- see below for many examples of this.
-                      :name                  "template-dataset-4"
+                      :name                  "template-dataset-10"
                       :description           "Description of your dataset, ie title of paper, title of clinical trial, or description of conglomerate dataset"
                       :doi                   "10.1126/science.aaa1348"
                       :url                   "http://science.sciencemag.org/content/suppl/2015/03/11/science.aaa1348.DC1"
@@ -71,15 +71,17 @@
 
 
                                                                   ; This measurement-set consists of copy number variation measurements run on the same samples as the above variants
-                                                                  {:name         "copy number variations"
-                                                                   :measurements [{:pret/input-file              #glob["processed/" "cnv_meas_*.tsv"]
-                                                                                   :pret/na                      ""
-                                                                                   :sample                       "barcode"
+                                                                  ; TODO: Fix this at some point in time when not blocking CANDEL ops. After fixing HGNC identifiers in the reference
+                                                                  ;       data there are now some failures here.
+                                                                  #_{:name         "copy number variations"
+                                                                     :measurements [{:pret/input-file              #glob["processed/" "cnv_meas_*.tsv"]
+                                                                                     :pret/na                      ""
+                                                                                     :sample                       "barcode"
 
-                                                                                   ; You can namespace attributes, or not - it's up to you. So :cnv and :measurement/cnv both work equally well.
-                                                                                   :measurement/cnv              "gc.id"
-                                                                                   :measurement/segment-mean-lrr "Segment_Mean"
-                                                                                   :measurement/a-allele-cn      "cn"}]}]}
+                                                                                     ; You can namespace attributes, or not - it's up to you. So :cnv and :measurement/cnv both work equally well.
+                                                                                     :measurement/cnv              "gc.id"
+                                                                                     :measurement/segment-mean-lrr "Segment_Mean"
+                                                                                     :measurement/a-allele-cn      "cn"}]}]}
 
 
 
@@ -129,7 +131,7 @@
                                                                                        :pret/na "NA"
                                                                                        :cell-type "cell.type"
                                                                                        :pret/constants {:from-clustering false}
-                                                                                       :positive-markers {:pret/many-delimiter  ";"
+                                                                                       :positive-markers {:pret/many-delimiter  ","
                                                                                                           :pret/many-variable "positive.epitopes"}
                                                                                        :name "name"}]
                                                                    :measurements [{:pret/input-file "processed/cytof_measurements_eventCount_Spitzer.txt"
