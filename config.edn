@@ -229,7 +229,7 @@
                                                :sex             "gender"
                                                ; Note that the disease is a pointer to the disease reference entity, so disease names will need to match :disease/preferred-name values
                                                ; You can get a list of valid disease names with wick::get_diseases() on your provisioned database
-                                               :meddra-disease  "disease"
+                                               #_:meddra-disease  #_"disease"
                                                :smoker          "smoker"
                                                :age "age"
                                                :HLA-A-type       {:pret/many-variable "hlaA"
@@ -255,7 +255,7 @@
                                               {:pret/input-file "processed/tcga-subjects.tsv"
                                                :pret/na         ""
                                                :id              "subject.id"
-                                               :meddra-disease         "disease"}]
+                                               #_:meddra-disease         #_"disease"}]
 
 
                       ; clinical-observations hold the equivalent of measurements, but for subjects instead of samples
@@ -276,11 +276,11 @@
                       ; Subjects are linked to treatment-regimen(s) through the therapy entity (see above)
                       :treatment-regimens    [{:name           "Pembrolizumab-3wk"
                                                :clinical-trial {:nct-number "NCT01295827"}
-                                               :drug-regimens  {:drug         "PEMBROLIZUMAB"
+                                               :drug-regimens  {;;:drug         "PEMBROLIZUMAB"
                                                                 :cycle-length 21}}
                                               {:name           "Pembrolizumab-2wk"
                                                :clinical-trial {:nct-number "NCT01295827"} ; Note that this will point to the same trial I created above
-                                               :drug-regimens  {:drug         "PEMBROLIZUMAB"
+                                               :drug-regimens  {;;:drug         "PEMBROLIZUMAB"
                                                                 :cycle-length 14}}]
 
                       ; Timepoints are very important entities. Each timepoint is one element on a timeline that your whole dataset follows.
