@@ -1,6 +1,6 @@
 name	cell.type	positive.epitopes
-CD16- NK cells	CD16-negative, CD56-bright natural killer cell	NA
-CD16+CD56mid NK	CD16-positive, CD56-dim natural killer cell	NA
+CD16- NK cells	CD16-negative, CD56-bright natural killer cell, human	NA
+CD16+CD56mid NK	CD16-positive, CD56-dim natural killer cell, human	NA
 Memory B cells	memory B cell	NA
 Naive B cells	naive B cell	NA
 Plasmablast	plasmablast	NA
