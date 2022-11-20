@@ -32,11 +32,12 @@ keep_var1_df = var1_df[~((var1_df['variable'] == 'Hugo_Symbol') & (var1_df['valu
 keep_var2_df = var2_df[~((var2_df['variable'] == 'Hugo_Symbol') & (var2_df['value'].apply(lambda x: x not in hugos)))]
 
 # var3 in a different format
-# drop if not here
-# fix: var3_df['hugo'] = cnv2_df['hugo']
+# drop if gene not here
+var3_df = var3_df[var3_df['hugo'].apply(lambda hugo: hugo in hugos)]
 
 # write fixed files
 keep_var1_df.to_csv(var1, sep='\t', header=True)
 keep_var2_df.to_csv(var2, sep='\t', header=True)
 cnv1_df.to_csv(cnv1, sep='\t', header=True)
 cnv2_df.to_csv(cnv2, sep='\t', header=True)
+var3_df.to_csv(var3, sep='\t', header=True)
