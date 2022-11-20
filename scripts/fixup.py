@@ -41,3 +41,39 @@ keep_var2_df.to_csv(var2, sep='\t', header=True)
 cnv1_df.to_csv(cnv1, sep='\t', header=True)
 cnv2_df.to_csv(cnv2, sep='\t', header=True)
 var3_df.to_csv(var3, sep='\t', header=True)
+
+# manual step: match cell type ontology names to any changes
+# just two added ", human" as a suffix
+
+# manual step: rename nanostring gene products
+
+# next: limit variant measurements and cnv measurements to only include
+#       measurements where the target is in the current ref file set.
+cnv_meas_1 = "processed/cnv_meas_1.tsv"
+cnv_meas_2 = "processed/cnv_meas_3.tsv"
+var_meas_1 = "processed/variant_meas_21.tsv"
+var_meas_2 = "processed/variant_meas_32.tsv"
+var_meas_3 = "processed/variant_measurements.txt"
+cnv1_meas_df = pd.read_csv(cnv_meas_1, sep='\t')
+cnv2_meas_df = pd.read_csv(cnv_meas_2, sep='\t')
+var1_meas_df = pd.read_csv(var_meas_1, sep='\t')
+var2_meas_df = pd.read_csv(var_meas_2, sep='\t')
+var3_meas_df = pd.read_csv(var_meas_3, sep='\t')
+
+# concatenate all variant ids from ref files
+all_variant_ids = set(var1_df['var.id']).union(set(var2_df['var.id']).union(var3_df['var.id']))
+
+# filter variant measurement files to variants in reference files
+var1_meas_df = var1_meas_df[var1_meas_df['var.id'].apply(lambda var: var in all_variant_ids)]
+var2_meas_df = var2_meas_df[var2_meas_df['var.id'].apply(lambda var: var in all_variant_ids)]
+var3_meas_df = var3_meas_df[var3_meas_df['var.id'].apply(lambda var: var in all_variant_ids)]
+
+# persist changes to files
+var1_meas_df.to_csv(var_meas_1, sep='\t', header=True)
+var2_meas_df.to_csv(var_meas_2, sep='\t', header=True)
+var3_meas_df.to_csv(var_meas_3, sep='\t', header=True)
+
+# manual step: truncate integers in output file var3_meas_df b/c molten format
+# sed: %s/\.0$//g
+
+
