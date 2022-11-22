@@ -276,11 +276,11 @@
                       ; Subjects are linked to treatment-regimen(s) through the therapy entity (see above)
                       :treatment-regimens    [{:name           "Pembrolizumab-3wk"
                                                :clinical-trial {:nct-number "NCT01295827"}
-                                               :drug-regimens  {;;:drug         "PEMBROLIZUMAB"
+                                               :drug-regimens  {:drug         "PEMBROLIZUMAB"
                                                                 :cycle-length 21}}
                                               {:name           "Pembrolizumab-2wk"
                                                :clinical-trial {:nct-number "NCT01295827"} ; Note that this will point to the same trial I created above
-                                               :drug-regimens  {;;:drug         "PEMBROLIZUMAB"
+                                               :drug-regimens  {:drug         "PEMBROLIZUMAB"
                                                                 :cycle-length 14}}]
 
                       ; Timepoints are very important entities. Each timepoint is one element on a timeline that your whole dataset follows.
@@ -392,6 +392,9 @@
                        ; values all in one column, with values separated by a delimeter like a semicolon, and use the following syntax to specify that
                        :genes       {:pret/many-delimiter ";"
                                      :pret/many-variable "Genes"}}
+  ;; If you haven't installed a proprietary WHO Drug reference dataset, you can
+  ;; define all drug names referred to in treatment data here.
+  :drug            [{:preferred-name "PEMBROLIZUMAB"}]
   :clinical-trial  {:nct-number "NCT01295827"
                     :other-ids  "KEYNOTE-001"
                     :name-long  "Study of Pembrolizumab (MK-3475) in Participants With Progressive Locally Advanced or Metastatic Carcinoma, Melanoma, or Non-small Cell Lung Carcinoma"}}
