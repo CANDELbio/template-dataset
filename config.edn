@@ -392,10 +392,11 @@
                        ; values all in one column, with values separated by a delimeter like a semicolon, and use the following syntax to specify that
                        :genes       {:pret/many-delimiter ";"
                                      :pret/many-variable "Genes"}}
+  ;; TODO: uncomment out when ref ordering bug fixed
   ;; If you haven't installed a proprietary WHO Drug reference dataset, you can
   ;; define all drug names referred to in treatment data here.
-  :drug            [{:pret/input-file "processed/drugs.tsv"
-                     :preferred-name "name"}]
+  #_:drug            #_[{:pret/input-file "processed/drugs.tsv"
+                         :preferred-name "name"}]
   :clinical-trial  {:nct-number "NCT01295827"
                     :other-ids  "KEYNOTE-001"
                     :name-long  "Study of Pembrolizumab (MK-3475) in Participants With Progressive Locally Advanced or Metastatic Carcinoma, Melanoma, or Non-small Cell Lung Carcinoma"}}
