@@ -394,7 +394,8 @@
                                      :pret/many-variable "Genes"}}
   ;; If you haven't installed a proprietary WHO Drug reference dataset, you can
   ;; define all drug names referred to in treatment data here.
-  :drug            [{:preferred-name "PEMBROLIZUMAB"}]
+  :drug            [{:pret/input-file "processed/drugs.tsv"
+                     :preferred-name "name"}]
   :clinical-trial  {:nct-number "NCT01295827"
                     :other-ids  "KEYNOTE-001"
                     :name-long  "Study of Pembrolizumab (MK-3475) in Participants With Progressive Locally Advanced or Metastatic Carcinoma, Melanoma, or Non-small Cell Lung Carcinoma"}}
